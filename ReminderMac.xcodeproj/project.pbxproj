@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32AA05A128F7011C002DD797 /* AllTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA05A028F7011C002DD797 /* AllTasksView.swift */; };
 		32FCC03828F6FF1600A3672A /* ReminderMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCC03728F6FF1600A3672A /* ReminderMacApp.swift */; };
 		32FCC03A28F6FF1600A3672A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCC03928F6FF1600A3672A /* ContentView.swift */; };
 		32FCC03C28F6FF1700A3672A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32FCC03B28F6FF1700A3672A /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32AA05A028F7011C002DD797 /* AllTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksView.swift; sourceTree = "<group>"; };
 		32FCC03428F6FF1600A3672A /* ReminderMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReminderMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FCC03728F6FF1600A3672A /* ReminderMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderMacApp.swift; sourceTree = "<group>"; };
 		32FCC03928F6FF1600A3672A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				32FCC03728F6FF1600A3672A /* ReminderMacApp.swift */,
 				32FCC03928F6FF1600A3672A /* ContentView.swift */,
+				32AA05A028F7011C002DD797 /* AllTasksView.swift */,
 				32FCC03B28F6FF1700A3672A /* Assets.xcassets */,
 				32FCC04028F6FF1700A3672A /* ReminderMac.entitlements */,
 				32FCC03D28F6FF1700A3672A /* Preview Content */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AA05A128F7011C002DD797 /* AllTasksView.swift in Sources */,
 				32FCC03A28F6FF1600A3672A /* ContentView.swift in Sources */,
 				32FCC03828F6FF1600A3672A /* ReminderMacApp.swift in Sources */,
 			);

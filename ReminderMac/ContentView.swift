@@ -7,15 +7,45 @@
 
 import SwiftUI
 
+struct Task: Identifiable {
+    public private(set) var id = UUID()
+    public var name: String
+    public var isFinished = false
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+    @State var tasks: [Task] = [Task(name: "DefaultTask")]
+    @State var selection: Int?
+    
+    
+    func makeTab(imageName: String, name: String) -> some View {
+        HStack {
+            Image(systemName: imageName)
+            Text(name)
         }
-        .padding()
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Spacer()
+                List {
+                    NavigationLink(tag: 0, selection: $selection) {
+                        AllTasksView(tasks: $tasks)
+                    }label: {
+                        makeTab(imageName: "tray", name: "すべて")
+                    }
+                    
+                }
+            }
+        }
+        .onAppear{
+            selection = 0
+        }
     }
 }
 
