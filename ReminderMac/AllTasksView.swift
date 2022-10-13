@@ -11,14 +11,23 @@ struct AllTasksView: View {
     @Binding var tasks: [Task]
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             List(tasks) {task in
                 Button(action: {
-                    
+                    print("button")
                 }, label: {
-                    
+                    HStack {
+                        Image(systemName: "tray")
+                            .foregroundColor(.white)
+                        Text("Button")
+                            .foregroundColor(.white)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .buttonStyle(.borderedProminent)
+                    .background(Color.blue)
                 })
-                .buttonStyle(.bordered)
+                .buttonStyle(PlainButtonStyle())
             }
         }
     }
