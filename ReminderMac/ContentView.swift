@@ -11,23 +11,20 @@ struct Task: Identifiable {
     public private(set) var id = UUID()
     public var name: String
     public var isFinished = false
+    public private(set) var date = Date()
     
-    init(name: String) {
+    public init(name: String) {
         self.name = name
     }
 }
 
 struct ContentView: View {
-    @State var tasks: [Task] = [Task(name: "DefaultTask")]
+    @State var tasks: [Task] = [
+        Task(name: "DefaultTask"),
+        Task(name: "Hello"),
+        Task(name: "wash")
+    ]
     @State var selection: Int?
-    
-    
-    func makeTab(imageName: String, name: String) -> some View {
-        HStack {
-            Image(systemName: imageName)
-            Text(name)
-        }
-    }
     
     var body: some View {
         NavigationView {
@@ -37,7 +34,13 @@ struct ContentView: View {
                     NavigationLink(tag: 0, selection: $selection) {
                         AllTasksView(tasks: $tasks)
                     }label: {
-                        makeTab(imageName: "tray", name: "すべて")
+                        Label("すべて", systemImage: "tray")
+                    }
+                    
+                    NavigationLink(tag: 1, selection: $selection) {
+                        // View()
+                    }label: {
+                        Label("今日", systemImage: "clock")
                     }
                     
                 }
