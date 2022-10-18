@@ -9,36 +9,57 @@ import SwiftUI
 
 struct AllTasksView: View {
     @Binding var tasks: [Task]
+    @State var isShowMakeTaskView = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            List(tasks) {task in
-                Button(action: {
-                    print("button")
-                }, label: {
-                    Label(task.name, systemImage: "tray")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                })
-                .background(Color.gray)
-                .buttonStyle(PlainButtonStyle())
-                .cornerRadius(10)
-                .swipeActions(edge: .trailing, content: {
+            if(tasks.isEmpty){
+                Text("No tasks!")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+            }else{
+                List(0..<tasks.count, id:\.self) {index in
                     Button(action: {
-                        print("a")
+                        tasks[index].isFinished.toggle()
                     }, label: {
-                        Label("a", systemImage: "trash")
+                        Label(tasks[index].name, systemImage: tasks[index].isFinished ? "checkmark.circle.fill" : "circle")
+                            .frame(maxWidth: .infinity)
+                            .padding()
                     })
-                    .tint(.red)
-                })
-//                .listRowInsets(EdgeInsets())
-                
+                    .background(Color.gray)
+                    .buttonStyle(PlainButtonStyle())
+                    .cornerRadius(10)
+                    .swipeActions(edge: .trailing, content: {
+                        Button(action: {
+                            tasks.remove(at: index)
+                        }, label: {
+                            Label("a", systemImage: "trash")
+                        })
+                        .tint(.red)
+                    })
+    //                .listRowInsets(EdgeInsets())
+                    if(tasks.isEmpty){
+                        Text("No tasks!")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                    }
+                }
+                .frame(maxWidth: 500)
+                .listStyle(DefaultListStyle())
             }
-            .frame(maxWidth: 500)
-            .listStyle(BorderedListStyle())
         }
         .frame(maxWidth: .infinity)
         .background(Color.white)
+        .toolbar {
+            Button {
+                isShowMakeTaskView = true
+            }label: {
+                Label("Add", systemImage: "plus")
+            }
+        }
+        .sheet(isPresented: $isShowMakeTaskView) {
+            MakeTask(isShowMakeTask: $isShowMakeTaskView, tasks: $tasks)
+        }
     }
 }
 

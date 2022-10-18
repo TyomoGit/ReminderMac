@@ -11,7 +11,6 @@ struct Task: Identifiable {
     public private(set) var id = UUID()
     public var name: String
     public var isFinished = false
-    public private(set) var date = Date()
     
     public init(name: String) {
         self.name = name
@@ -20,8 +19,6 @@ struct Task: Identifiable {
 
 struct ContentView: View {
     @State var tasks: [Task] = [
-        Task(name: "DefaultTask"),
-        Task(name: "Hello"),
         Task(name: "wash")
     ]
     @State var selection: Int?
@@ -38,7 +35,7 @@ struct ContentView: View {
                     }
                     
                     NavigationLink(tag: 1, selection: $selection) {
-                        // View()
+                        TodayView()
                     }label: {
                         Label("今日", systemImage: "clock")
                     }
@@ -49,6 +46,8 @@ struct ContentView: View {
         .onAppear{
             selection = 0
         }
+        .frame(width: 500)
+        .frame(minHeight: 200)
     }
 }
 

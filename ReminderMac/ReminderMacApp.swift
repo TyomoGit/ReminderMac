@@ -18,18 +18,18 @@ struct ReminderMacApp: App {
                         window.standardWindowButton(.zoomButton)?.isEnabled = false
                     }
                 })
-                .onAppear {
-                    UserDefaults.standard.set(true, forKey: "NSFullScreenMenuItemEverywhere")
-                    DispatchQueue.main.async {
-                                            NSApplication.shared.windows.forEach { window in
-                                                window.styleMask = [.titled, .closable, .miniaturizable]
-                                            }
-                                        }
-                }
+//                .onAppear {
+//                    UserDefaults.standard.set(true, forKey: "NSFullScreenMenuItemEverywhere")
+//                    DispatchQueue.main.async {
+//                                            NSApplication.shared.windows.forEach { window in
+//                                                window.styleMask = [.titled, .closable, .miniaturizable]
+//                                            }
+//                                        }
+//                }
         }
-        .commands {
-            CommandGroup(replacing: CommandGroupPlacement.appVisibility, addition: {})
-        }
+//        .commands {
+//            CommandGroup(replacing: CommandGroupPlacement.appVisibility, addition: {})
+//        }
     }
     
     init() {
